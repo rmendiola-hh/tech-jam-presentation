@@ -23,6 +23,8 @@ export const CodeSlide: React.FC<CodeSlideProps> = ({ slide }) => {
             lineHeight: '1.6',
             backgroundColor: 'var(--color-code-background)',
             border: '1px solid var(--color-border)',
+            flex: 1,
+            height: '100%',
           }}
         >
           {slide.code}
