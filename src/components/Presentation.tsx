@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { Slide } from '../types/slides';
 import { SlideRenderer } from './SlideRenderer';
 import './Presentation.css';
@@ -10,6 +10,55 @@ interface PresentationProps {
 export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [slideWidths, setSlideWidths] = useState<number[]>([]);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Initialize refs array
+  useEffect(() => {
+    slideRefs.current = slideRefs.current.slice(0, slides.length);
+  }, [slides.length]);
+
+  // Measure slide widths
+  const measureSlides = useCallback(() => {
+    const widths = slideRefs.current.map((ref, index) => {
+      if (ref) {
+        const rect = ref.getBoundingClientRect();
+        const width = rect.width + 20; // Include margin-right
+        console.log(`Slide ${index} width:`, width);
+        return width;
+      }
+      return 0;
+    });
+    console.log('All slide widths:', widths);
+    setSlideWidths(widths);
+  }, []);
+
+  // Measure on mount and resize
+  useEffect(() => {
+    measureSlides();
+    window.addEventListener('resize', measureSlides);
+    return () => window.removeEventListener('resize', measureSlides);
+  }, [measureSlides]);
+
+  // Measure after slides render
+  useEffect(() => {
+    if (slides.length > 0) {
+      // Small delay to ensure DOM is updated
+      const timer = setTimeout(measureSlides, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [slides, measureSlides]);
+
+  // Calculate translate based on actual slide widths
+  const calculateTranslateX = useCallback(() => {
+    if (slideWidths.length === 0) return 0;
+    
+    let totalWidth = 0;
+    for (let i = 0; i < currentSlideIndex; i++) {
+      totalWidth += slideWidths[i] || 0;
+    }
+    return -totalWidth;
+  }, [currentSlideIndex, slideWidths]);
 
   const goToNextSlide = useCallback(() => {
     if (currentSlideIndex < slides.length - 1) {
@@ -77,18 +126,21 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
     return <div className="no-slides">No slides available</div>;
   }
 
-  const slideWidth = 100 - 8; // Each slide takes 92% width (100% - 8% for peek)
-  const translateX = -currentSlideIndex * slideWidth;
+  const translateX = calculateTranslateX();
 
   return (
     <div className={`presentation ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className="slide-container">
         <div 
           className="slides-track"
-          style={{ transform: `translateX(${translateX}%)` }}
+          style={{ transform: `translateX(${translateX}px)` }}
         >
           {slides.map((slide, index) => (
-            <div key={slide.id} className="slide-wrapper">
+            <div 
+              key={slide.id} 
+              className="slide-wrapper"
+              ref={el => slideRefs.current[index] = el}
+            >
               <div className="slide">
                 <SlideRenderer slide={slide} />
               </div>
