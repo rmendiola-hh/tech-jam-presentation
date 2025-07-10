@@ -10,25 +10,16 @@ interface PresentationProps {
 export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [slideDirection, setSlideDirection] = useState<'next' | 'prev' | 'none'>('none');
 
   const goToNextSlide = useCallback(() => {
     if (currentSlideIndex < slides.length - 1) {
-      setSlideDirection('next');
-      setTimeout(() => {
-        setCurrentSlideIndex(currentSlideIndex + 1);
-        setSlideDirection('none');
-      }, 50);
+      setCurrentSlideIndex(currentSlideIndex + 1);
     }
   }, [currentSlideIndex, slides.length]);
 
   const goToPrevSlide = useCallback(() => {
     if (currentSlideIndex > 0) {
-      setSlideDirection('prev');
-      setTimeout(() => {
-        setCurrentSlideIndex(currentSlideIndex - 1);
-        setSlideDirection('none');
-      }, 50);
+      setCurrentSlideIndex(currentSlideIndex - 1);
     }
   }, [currentSlideIndex]);
 
@@ -86,13 +77,23 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
     return <div className="no-slides">No slides available</div>;
   }
 
+  const slideWidth = 100 - 8; // Each slide takes 92% width (100% - 8% for peek)
+  const translateX = -currentSlideIndex * slideWidth;
+
   return (
     <div className={`presentation ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className="slide-container">
-        <div className={`slide-wrapper ${slideDirection}`}>
-          <div className="slide">
-            <SlideRenderer slide={slides[currentSlideIndex]} />
-          </div>
+        <div 
+          className="slides-track"
+          style={{ transform: `translateX(${translateX}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div key={slide.id} className="slide-wrapper">
+              <div className="slide">
+                <SlideRenderer slide={slide} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       
