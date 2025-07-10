@@ -25,6 +25,7 @@
   --color-background: var(--color-slate-900);
   --color-surface: var(--color-slate-800);
   --color-surface-elevated: var(--color-slate-700);
+  --color-code-background: var(--color-slate-900);
   
   --color-text-primary: var(--color-slate-50);
   --color-text-secondary: var(--color-slate-300);
@@ -112,7 +113,7 @@ li {
 code {
   font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
   font-size: 0.9em;
-  background-color: var(--color-slate-900);
+  background-color: var(--color-code-background);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   color: var(--color-text-primary);
