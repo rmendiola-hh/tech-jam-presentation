@@ -10,12 +10,13 @@ export const sampleSlides: Slide[] = [
   {
     id: '2',
     type: 'bullets',
-    title: 'Core Message',
+    title: 'What We Will Be Covering',
     bullets: [
-      'Strategic development approach with benefits for users, business, and developers',
-      'Heavy focus on code cleanliness and modularity',
-      'Puts us in a much better position to keep iterating on the home screen',
-      'Lessons that other teams can apply to their work'
+      'Simplified Home Architecture - Three-stage separation of concerns',
+      'Storybook - Web-based component development and collaboration',
+      'Phoenix Monorepo Modules - Strategic package boundaries',
+      'TTI Measurements - Performance tracking and visibility',
+      'Takeaways for Other Teams - Actionable principles and recommendations'
     ]
   },
   {
