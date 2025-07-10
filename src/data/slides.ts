@@ -219,7 +219,7 @@ export const createHomeLayout = (
     type: 'bullets',
     title: 'Storybook for Presentational Components',
     bullets: [
-      'Leverage React Native's web capabilities for component development',
+      'Leverage React Native web capabilities for component development',
       'No need for simulators - see work instantly on web',
       'PMs and designers can review UI before nightly builds',
       'Living documentation of available components',
@@ -232,7 +232,7 @@ export const createHomeLayout = (
     title: 'The Home Cards Monorepo Package',
     bullets: [
       'Strategic technical solution - first monorepo package in Phoenix',
-      'Storybook sandbox that doesn\'t affect Phoenix build',
+      'Storybook sandbox that does not affect Phoenix build',
       'Exports clean, presentational components as NPM package',
       'Protection against business logic in presentation components',
       'Operational benefits for the whole team'
@@ -327,7 +327,7 @@ export default function HomeScreenV2() {
       'Measure Performance Impact with clear metrics',
       'Clean Up Technical Debt Proactively',
       'Maintain Architectural Consistency across features',
-      'Document technical debt as it\'s created'
+      'Document technical debt as it is created'
     ]
   },
   {
