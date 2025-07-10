@@ -134,6 +134,9 @@
 .code-container code,
 .code-container code[class*="language-"] {
   background-color: var(--color-code-background) !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
 }
 
 /* Presentation Controls */
