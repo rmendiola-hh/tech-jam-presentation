@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Slide } from '../types/slides';
+import type { Slide } from '../types/slides';
 import { SlideRenderer } from './SlideRenderer';
 import './Presentation.css';
 

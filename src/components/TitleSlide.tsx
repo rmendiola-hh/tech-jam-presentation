@@ -1,5 +1,5 @@
 import React from 'react';
-import { TitleSlide as TitleSlideType } from '../types/slides';
+import type { TitleSlide as TitleSlideType } from '../types/slides';
 
 interface TitleSlideProps {
   slide: TitleSlideType;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slide } from '../types/slides';
+import type { Slide } from '../types/slides';
 import { TitleSlide } from './TitleSlide';
 import { BulletsSlide } from './BulletsSlide';
 import { CodeSlide } from './CodeSlide';

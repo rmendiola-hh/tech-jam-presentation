@@ -1,7 +1,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CodeSlide as CodeSlideType } from '../types/slides';
+import type { CodeSlide as CodeSlideType } from '../types/slides';
 
 interface CodeSlideProps {
   slide: CodeSlideType;

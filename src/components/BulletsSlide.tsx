@@ -1,5 +1,5 @@
 import React from 'react';
-import { BulletsSlide as BulletsSlideType } from '../types/slides';
+import type { BulletsSlide as BulletsSlideType } from '../types/slides';
 
 interface BulletsSlideProps {
   slide: BulletsSlideType;
