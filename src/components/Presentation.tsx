@@ -142,10 +142,20 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
         <div className="footer-title">
           Simplified Home Tech Jam July 2025
         </div>
-        <div className="footer-controls">
+        <div className="footer-center">
+          <div className="progress-container">
+            <div 
+              className="progress-bar"
+              style={{ 
+                width: `${((currentSlideIndex + 1) / slides.length) * 100}%` 
+              }}
+            />
+          </div>
           <div className="slide-counter">
             {currentSlideIndex + 1} / {slides.length}
           </div>
+        </div>
+        <div className="footer-controls">
           <div className="control-buttons">
             <button 
               onClick={goToPrevSlide} 
