@@ -10,55 +10,44 @@ interface PresentationProps {
 export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [slideWidths, setSlideWidths] = useState<number[]>([]);
-  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [slideWidth, setSlideWidth] = useState<number>(0);
+  const firstSlideRef = useRef<HTMLDivElement | null>(null);
 
-  // Initialize refs array
-  useEffect(() => {
-    slideRefs.current = slideRefs.current.slice(0, slides.length);
-  }, [slides.length]);
-
-  // Measure slide widths
-  const measureSlides = useCallback(() => {
-    const widths = slideRefs.current.map((ref, index) => {
-      if (ref) {
-        const rect = ref.getBoundingClientRect();
-        const width = rect.width + 20; // Include margin-right
-        console.log(`Slide ${index} width:`, width);
-        return width;
-      }
-      return 0;
-    });
-    console.log('All slide widths:', widths);
-    setSlideWidths(widths);
+  // Measure single slide width (all slides are same width)
+  const measureSlideWidth = useCallback(() => {
+    if (firstSlideRef.current) {
+      const rect = firstSlideRef.current.getBoundingClientRect();
+      const width = rect.width + 20; // Include margin-right
+      console.log('Measured slide width:', width);
+      setSlideWidth(width);
+    }
   }, []);
 
-  // Measure on mount and resize
+  // Measure on mount, resize, and fullscreen changes
   useEffect(() => {
-    measureSlides();
-    window.addEventListener('resize', measureSlides);
-    return () => window.removeEventListener('resize', measureSlides);
-  }, [measureSlides]);
+    measureSlideWidth();
+    window.addEventListener('resize', measureSlideWidth);
+    return () => window.removeEventListener('resize', measureSlideWidth);
+  }, [measureSlideWidth]);
+
+  // Remeasure when fullscreen changes
+  useEffect(() => {
+    const timer = setTimeout(measureSlideWidth, 100); // Small delay for fullscreen transition
+    return () => clearTimeout(timer);
+  }, [isFullscreen, measureSlideWidth]);
 
   // Measure after slides render
   useEffect(() => {
     if (slides.length > 0) {
-      // Small delay to ensure DOM is updated
-      const timer = setTimeout(measureSlides, 50);
+      const timer = setTimeout(measureSlideWidth, 50);
       return () => clearTimeout(timer);
     }
-  }, [slides, measureSlides]);
+  }, [slides, measureSlideWidth]);
 
-  // Calculate translate based on actual slide widths
+  // Calculate translate based on slide width
   const calculateTranslateX = useCallback(() => {
-    if (slideWidths.length === 0) return 0;
-    
-    let totalWidth = 0;
-    for (let i = 0; i < currentSlideIndex; i++) {
-      totalWidth += slideWidths[i] || 0;
-    }
-    return -totalWidth;
-  }, [currentSlideIndex, slideWidths]);
+    return -currentSlideIndex * slideWidth;
+  }, [currentSlideIndex, slideWidth]);
 
   const goToNextSlide = useCallback(() => {
     if (currentSlideIndex < slides.length - 1) {
@@ -139,7 +128,7 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
             <div 
               key={slide.id} 
               className="slide-wrapper"
-              ref={el => slideRefs.current[index] = el}
+              ref={index === 0 ? firstSlideRef : null}
             >
               <div className="slide">
                 <SlideRenderer slide={slide} />
