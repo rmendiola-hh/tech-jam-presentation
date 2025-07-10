@@ -33,6 +33,17 @@ export const sampleSlides: Slide[] = [
   },
   {
     id: '4',
+    type: 'bullets',
+    title: 'Our Four Guiding Principles',
+    bullets: [
+      'Absolute Best Experience for Our Members - Buttery smooth, home screen loads instantly',
+      'Agile Surface for Easy Experimentation - Quick iterations, not 2-week setups',
+      'Great Developer Experience - Clean, modular, testable code',
+      'Do Not Slow Down Product Development - Our rearchitecture should have no impact on other teams'
+    ]
+  },
+  {
+    id: '5',
     type: 'code',
     title: 'Legacy Home Complexity',
     language: 'text',
@@ -93,16 +104,6 @@ export const sampleSlides: Slide[] = [
         │       ├─> PracticeLabHomeScreenIngressCards (src/modules/practice-lab/components/PracticeLabHomeScreenIngressCards/index.tsx) [if !isGlobal && !isFtuAePlaylist]
         │       └─> ReferralComponent (src/containers/Playlist/ReferralComponent/index.tsx) [if showCTAs && !isGlobal]
         └─> Error Screen (navigateToAppLoadingFailedScreens with PLAYLIST_TYPE_NOT_SUPPORTED) [if none of the above conditions match]`
-  },
-  {
-    id: '5',
-    type: 'bullets',
-    title: 'Our Three Guiding Principles',
-    bullets: [
-      'Absolute Best Experience for Our Members - Buttery smooth, home screen loads instantly',
-      'Agile Surface for Easy Experimentation - Quick iterations, not 2-week setups',
-      'Great Developer Experience - Clean, modular, testable code'
-    ]
   },
   {
     id: '6',
