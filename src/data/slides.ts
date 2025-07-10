@@ -1,4 +1,5 @@
 import type { Slide } from '../types/slides';
+import ThreeStageArchitectureDiagram from '../components/ThreeStageArchitectureDiagram';
 
 export const sampleSlides: Slide[] = [
   {
@@ -144,6 +145,12 @@ STAGE 3: Rendering the Card
   },
   {
     id: '7',
+    type: 'custom',
+    title: 'Three-Stage Architecture Overview',
+    component: ThreeStageArchitectureDiagram
+  },
+  {
+    id: '8',
     type: 'code',
     title: 'Simplified Home Architecture',
     language: 'text',
@@ -179,7 +186,7 @@ HomeScreenV2 → <HomeLayout items={items} />
    └─ <IncentivesCard {...props} />`
   },
   {
-    id: '8',
+    id: '9',
     type: 'code',
     title: 'createHomeLayout Function',
     language: 'typescript',
@@ -212,7 +219,7 @@ export const createHomeLayout = (
 };`
   },
   {
-    id: '9',
+    id: '10',
     type: 'code',
     title: 'Card Generator Example',
     language: 'typescript',
@@ -252,7 +259,7 @@ export const createHomeLayout = (
 };`
   },
   {
-    id: '10',
+    id: '11',
     type: 'bullets',
     title: 'Storybook for Presentational Components',
     bullets: [
@@ -265,7 +272,7 @@ export const createHomeLayout = (
     ]
   },
   {
-    id: '11',
+    id: '12',
     type: 'bullets',
     title: 'The Home Cards Monorepo Package',
     bullets: [
@@ -277,7 +284,7 @@ export const createHomeLayout = (
     ]
   },
   {
-    id: '12',
+    id: '13',
     type: 'code',
     title: 'Home Cards Package Exports',
     language: 'typescript',
@@ -302,7 +309,7 @@ export { WeeklyGoalCard } from "./components/WeeklyGoalCard";
 // business logic and data management.`
   },
   {
-    id: '13',
+    id: '14',
     type: 'bullets',
     title: 'Time to Interactive (TTI) Measurement',
     bullets: [
@@ -314,7 +321,7 @@ export { WeeklyGoalCard } from "./components/WeeklyGoalCard";
     ]
   },
   {
-    id: '14',
+    id: '15',
     type: 'code',
     title: 'TTI Implementation',
     language: 'typescript',
@@ -349,7 +356,7 @@ export default function HomeScreenV2() {
 }`
   },
   {
-    id: '15',
+    id: '16',
     type: 'bullets',
     title: 'Key Principles for Other Teams',
     bullets: [
@@ -361,7 +368,7 @@ export default function HomeScreenV2() {
     ]
   },
   {
-    id: '16',
+    id: '17',
     type: 'bullets',
     title: 'More Principles for Other Teams',
     bullets: [
@@ -373,7 +380,7 @@ export default function HomeScreenV2() {
     ]
   },
   {
-    id: '17',
+    id: '18',
     type: 'bullets',
     title: 'Project Accomplishments',
     bullets: [
@@ -385,7 +392,7 @@ export default function HomeScreenV2() {
     ]
   },
   {
-    id: '18',
+    id: '19',
     type: 'bullets',
     title: 'Benefits of This Architecture',
     bullets: [
@@ -397,7 +404,7 @@ export default function HomeScreenV2() {
     ]
   },
   {
-    id: '19',
+    id: '20',
     type: 'bullets',
     title: 'Questions & Follow-Up',
     bullets: [

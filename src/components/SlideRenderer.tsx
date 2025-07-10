@@ -3,6 +3,7 @@ import type { Slide } from '../types/slides';
 import { TitleSlide } from './TitleSlide';
 import { BulletsSlide } from './BulletsSlide';
 import { CodeSlide } from './CodeSlide';
+import CustomSlide from './CustomSlide';
 
 interface SlideRendererProps {
   slide: Slide;
@@ -16,6 +17,8 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide }) => {
       return <BulletsSlide slide={slide} />;
     case 'code':
       return <CodeSlide slide={slide} />;
+    case 'custom':
+      return <CustomSlide slide={slide} />;
     default:
       return <div>Unknown slide type</div>;
   }

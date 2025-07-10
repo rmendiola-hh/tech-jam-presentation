@@ -1,6 +1,6 @@
 export interface BaseSlide {
   id: string;
-  type: 'title' | 'bullets' | 'code';
+  type: 'title' | 'bullets' | 'code' | 'custom';
 }
 
 export interface TitleSlide extends BaseSlide {
@@ -22,4 +22,10 @@ export interface CodeSlide extends BaseSlide {
   language?: string;
 }
 
-export type Slide = TitleSlide | BulletsSlide | CodeSlide;
+export interface CustomSlide extends BaseSlide {
+  type: 'custom';
+  title: string;
+  component: React.ComponentType;
+}
+
+export type Slide = TitleSlide | BulletsSlide | CodeSlide | CustomSlide;

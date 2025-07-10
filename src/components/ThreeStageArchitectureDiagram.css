@@ -1,0 +1,247 @@
+.three-stage-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-white-clean);
+  font-family: var(--font-display);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.legacy-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.legacy-content {
+  flex: 1;
+}
+
+.legacy-component-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+}
+
+.legacy-list {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.legacy-list div {
+  margin-bottom: 0.2rem;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.transition-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0.5rem 0;
+}
+
+.arrow-down-line {
+  width: 2px;
+  height: 1.5rem;
+  background-color: var(--color-teal-bright);
+}
+
+.arrow-down-head {
+  color: var(--color-teal-bright);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.stages-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.stage {
+  flex: 1;
+  width: 500px;
+  height: 350px;
+  background-color: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage:hover {
+  border-color: var(--color-teal-bright);
+  transform: translateY(-2px);
+}
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stage-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-teal-bright);
+  color: var(--color-background);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+.stage-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white-clean);
+  font-family: var(--font-display);
+}
+
+.stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.component-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.component-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.component-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+}
+
+.component-desc {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+}
+
+.stage-description {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-style: italic;
+}
+
+.arrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.arrow-line {
+  width: 2rem;
+  height: 2px;
+  background-color: var(--color-teal-bright);
+}
+
+.arrow-head {
+  color: var(--color-teal-bright);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Stage-specific styling */
+.stage-1 {
+  border-color: var(--color-teal-accent);
+}
+
+.stage-2 {
+  border-color: var(--color-teal-bright);
+}
+
+.stage-3 {
+  border-color: var(--color-teal-soft);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .three-stage-diagram {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .stage {
+    padding: 1rem;
+  }
+  
+  .stage-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .stage-title {
+    font-size: 1.5rem;
+  }
+  
+  .component-icon {
+    font-size: 2.5rem;
+  }
+  
+  .component-name {
+    font-size: 1.1rem;
+  }
+  
+  .component-desc {
+    font-size: 0.9rem;
+  }
+}
