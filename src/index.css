@@ -1,5 +1,5 @@
 :root {
-  /* Base color palette */
+  /* Base color palette - Optimized for dark theme harmony */
   --color-slate-900: #0f172a;
   --color-slate-800: #1e293b;
   --color-slate-700: #334155;
@@ -18,25 +18,29 @@
   --color-emerald-500: #10b981;
   --color-emerald-400: #34d399;
 
-  --color-amber-500: #f59e0b;
-  --color-amber-400: #fbbf24;
+  /* Desaturated amber for better dark theme harmony */
+  --color-amber-500: #d97706;
+  --color-amber-400: #f59e0b;
+  --color-amber-300: #fbbf24;
 
-  /* Semantic colors */
-  --color-background: #000000;
+  /* Semantic colors - Following dark theme best practices */
+  --color-background: #121212;  /* Google Material recommended dark gray */
   --color-surface: var(--color-slate-800);
   --color-surface-elevated: var(--color-slate-700);
   --color-surface-dark: var(--color-slate-900);
-  --color-code-background: #000000;
+  --color-code-background: #000000;  /* Pure black for code - power saving on OLED */
   
-  --color-text-primary: var(--color-slate-50);
+  /* Softer text colors for reduced eye strain */
+  --color-text-primary: #e2e8f0;  /* Slightly softer than pure white */
   --color-text-secondary: var(--color-slate-300);
   --color-text-muted: var(--color-slate-400);
   
-  --color-accent: var(--color-amber-500);
+  /* Desaturated amber accent for better harmony */
+  --color-accent: var(--color-amber-500);  /* Now using the desaturated version */
   --color-accent-hover: var(--color-amber-400);
   --color-accent-warm: var(--color-amber-500);
   
-  /* Semantic UI colors */
+  /* Semantic UI colors - Using desaturated accent */
   --color-slide-title: var(--color-accent-warm);
   --color-bullet-point: var(--color-accent-warm);
   --color-progress: var(--color-accent-warm);

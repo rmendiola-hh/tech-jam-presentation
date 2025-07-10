@@ -24,11 +24,11 @@ export const sampleSlides: Slide[] = [
     type: 'bullets',
     title: 'The Main Problems We Faced',
     bullets: [
-      'Lack of Central Control - No controlling logic for home screen',
-      'Convoluted React Components - 7 years of layers upon layers',
-      'Business logic buried in nested hooks',
-      'Side effects affecting other components and performance',
-      'Simple features required ugly hacks'
+      'Lack of Central Control - No controlling logic for home screen layout decisions',
+      'Convoluted React Hierarchy - 7 years of layers upon layers of conditional rendering',
+      'Business logic buried in nested hooks - Logic scattered across multiple component layers',
+      'Side effects affecting other components and performance - Unintended network calls and state updates',
+      'Simple features required ugly hacks - No clean way to implement basic UI requirements'
     ]
   },
   {
@@ -99,10 +99,9 @@ export const sampleSlides: Slide[] = [
     type: 'bullets',
     title: 'Our Three Guiding Principles',
     bullets: [
-      'Absolute Best Experience for Our Members - Home screen loads right away',
-      'Agile Product for Easy Experimentation - Quick iterations, not 2-week setups',
-      'Great Developer Experience - Clean, modular, testable code',
-      'Move away from frustrating legacy codebase patterns'
+      'Absolute Best Experience for Our Members - Buttery smooth, home screen loads instantly',
+      'Agile Surface for Easy Experimentation - Quick iterations, not 2-week setups',
+      'Great Developer Experience - Clean, modular, testable code'
     ]
   },
   {
