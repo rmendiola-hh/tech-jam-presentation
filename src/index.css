@@ -22,11 +22,11 @@
   --color-amber-400: #fbbf24;
 
   /* Semantic colors */
-  --color-background: var(--color-slate-900);
+  --color-background: #000000;
   --color-surface: var(--color-slate-800);
   --color-surface-elevated: var(--color-slate-700);
   --color-surface-dark: var(--color-slate-900);
-  --color-code-background: var(--color-slate-900);
+  --color-code-background: #000000;
   
   --color-text-primary: var(--color-slate-50);
   --color-text-secondary: var(--color-slate-300);
