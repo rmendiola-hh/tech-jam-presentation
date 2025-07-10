@@ -49,6 +49,7 @@
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  font-size: 2rem; /* Base font size - all other sizes will be relative to this */
 }
 
 .slide-content {
@@ -67,64 +68,85 @@
 }
 
 .title-slide .slide-title {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: 4em; /* 8rem relative to 2rem base = 4em */
+  margin-bottom: 0.1em;
   color: var(--color-text-primary);
 }
 
 .slide-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.5em; /* 3rem relative to 2rem base = 1.5em */
   color: var(--color-text-secondary);
   max-width: 80%;
 }
 
 /* Bullets Slide Styles */
 .bullets-slide .slide-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 1.5em; /* 3rem relative to 2rem base = 1.5em */
+  margin-bottom: 1em;
   color: var(--color-text-primary);
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5em;
+  font-weight: 400;
 }
 
 .slide-bullets {
   list-style: none;
   padding: 0;
+  margin-left: 1em;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.25em;
+  justify-content: center;
 }
 
 .slide-bullet {
-  font-size: 1.75rem;
-  color: var(--color-text-secondary);
+  font-size: 1.5em; /* 3rem relative to 2rem base = 1.5em */
+  color: var(--color-text-primary);
   position: relative;
-  padding-left: 2rem;
+  padding-left: 0.7em;
   line-height: 1.5;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5em;
 }
 
 .slide-bullet::before {
   content: '•';
-  color: var(--color-accent);
-  font-size: 1.75rem;
+  color: var(--color-text-secondary);
+  font-size: 1.2em;
   position: absolute;
   left: 0;
-  top: 0;
+  top: -0.2em;
+  line-height: 1.5;
 }
 
-/* Support for label/sublabel structure */
+/* Support for main/sub text structure */
+.slide-bullet .bullet-main {
+  font-size: 1em; /* Same as parent bullet size */
+  color: var(--color-text-primary);
+  font-weight: 400;
+  display: block;
+  line-height: 1.5;
+}
+
+.slide-bullet .bullet-sub {
+  font-size: 0.75em; /* Smaller than main text */
+  color: var(--color-text-muted);
+  font-weight: 400;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Legacy support for label/sublabel structure */
 .slide-bullet .bullet-label {
-  font-size: 1.75rem;
+  font-size: 1.5em;
   color: var(--color-text-primary);
   font-weight: 600;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25em;
 }
 
 .slide-bullet .bullet-sublabel {
-  font-size: 1.25rem;
+  font-size: 1.125em; /* 2.25rem relative to 2rem base = 1.125em */
   color: var(--color-text-muted);
   font-weight: 400;
   line-height: 1.4;
@@ -132,15 +154,16 @@
 
 /* Code Slide Styles */
 .code-slide {
-  gap: 1.5rem;
+  gap: 0.75em;
 }
 
 .code-slide .slide-title {
-  font-size: 2rem;
+  font-size: 1.25em; /* 2.5rem relative to 2rem base = 1.25em */
   color: var(--color-text-primary);
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.375em;
   flex-shrink: 0;
+  font-weight: 400;
 }
 
 .code-container {
@@ -166,7 +189,7 @@
 .code-container code[class*="language-"] {
   background-color: var(--color-code-background) !important;
   border: none !important;
-  padding: 1.5rem !important;
+  padding: 0.75em !important;
   border-radius: 0 !important;
   flex: 1 !important;
   overflow: auto !important;

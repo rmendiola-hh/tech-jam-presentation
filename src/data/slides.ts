@@ -36,27 +36,63 @@ export const sampleSlides: Slide[] = [
     type: 'code',
     title: 'Legacy Home Complexity',
     language: 'text',
-    code: `HomeStack → HomeScreenV2 [if homeV2]
-         → PerisurgicalHome [if isPerisurgical]
-         → Playlist [if !homeV2 && !isPerisurgical]
-             └─> PlaylistContentHandler
-                 ├─> AcutePlaylistContent [if isAcuteUser]
-                 │   ├─> PlaylistWithVideoCallCard
-                 │   │   ├─> VideoCallCard
-                 │   │   └─> PlaylistWrapper
-                 │   │       ├─> AcutePlaylistCard
-                 │   │       └─> PostPlaylistModal
-                 │   └─> ReferralComponent
-                 ├─> AeChronicPlaylistContent [if isAeChronic]
-                 │   ├─> PlaylistTop
-                 │   ├─> TodaySection
-                 │   │   ├─> TodayHeader
-                 │   │   ├─> EmoCard
-                 │   │   └─> PlaylistWithVideoCallCard
-                 │   └─> ForYouSection
-                 │       ├─> ForYouHeader
-                 │       ├─> EngagementIncentivesCard
-                 │       └─> [20+ more components...]`
+    code: `HomeStack (src/commons/Routing/RNavStack/mainStack/tabsStack/homeStack/index.tsx)
+└─> HomeScreenV2 (src/modules/home/screens/HomeScreenV2/index.tsx) [if homeV2]
+└─> PerisurgicalHome (src/modules/programs/perisurgical/screens/PerisurgicalHome.tsx) [if isPerisurgical]
+└─> AcutePreConsultV2 (src/modules/programs/acute/screens/v2AcutePreConsult.tsx) [if isAcutePreConsult]
+└─> Playlist (src/containers/Playlist/index.tsx) [if !homeV2 && !isPerisurgical && !isAcutePreConsult]
+    └─> PlaylistContentHandler (src/containers/Playlist/components/PlaylistContentHandler.tsx)
+        ├─> AcutePlaylistContent (src/containers/Playlist/components/AcutePlaylistContent.tsx) [if isAcuteUser]
+        │   ├─> PlaylistWithVideoCallCard (src/containers/Playlist/components/PlaylistWithVideoCallCard.tsx)
+        │   │   ├─> VideoCallCard (src/modules/video-calls/components/VideoCallCard/index.tsx) [if !isGlobal]
+        │   │   └─> PlaylistWrapper (src/containers/Playlist/components/PlaylistWrapper.tsx)
+        │   │       ├─> AcutePlaylistCard (src/modules/programs/acute/components/AcutePlaylistCard.tsx)
+        │   │       └─> PostPlaylistModal (src/containers/Playlist/PostPlaylistModal/index.tsx) [if isComplete]
+        │   └─> ReferralComponent (src/containers/Playlist/ReferralComponent/index.tsx) [if showCTAs && !isGlobal]
+        ├─> AeChronicPlaylistContent (src/containers/Playlist/components/AeChronicPlaylistContent.tsx) [if isAeChronic || isUnificationDev || isWellness]
+        │   ├─> PlaylistTop (src/containers/Playlist/PlaylistTop.tsx) [if !isFirstWeekGoalV1 && !isWeeklyGoalExpansion]
+        │   │   └─> WeeklyPlaylistModal (src/containers/Playlist/WeeklyPlaylistModal/index.tsx) [when showWeeklyModal is true]
+        │   ├─> AeChronicPlaylistTop (src/containers/Playlist/components/AeChronicPlaylistTop.tsx) [if isFirstWeekGoalV1 || isWeeklyGoalExpansion]
+        │   │   ├─> FirstWeekGoalTracker (src/modules/first-week-goal/components/FirstWeekGoalTracker/FirstWeekGoalTracker.tsx) [if showFirstWeekTracker]
+        │   │   │   └─> FirstWeekGoalTrackerShimmer (src/modules/first-week-goal/components/FirstWeekGoalTracker/FirstWeekGoalTrackerShimmer.tsx) [when loading]
+        │   │   └─> WeeklyTracker (src/modules/first-week-goal/screens/WeeklyTracker.tsx) [if !showFirstWeekTracker]
+        │   │       ├─> GoalStreaksTooltipWrapper (src/modules/weekly-goal-streaks/components/GoalStreaksTooltipWrapper.tsx) [if showTooltip]
+        │   │       └─> GoalTrackerCard (src/modules/first-week-goal/screens/GoalTrackerCard.tsx)
+        │   ├─> TodaySection (src/modules/home/components/TodaySection/index.tsx)
+        │   │   ├─> TodayHeader (src/modules/home/components/TodayHeader/index.tsx)
+        │   │   ├─> EmoCard (src/containers/Playlist/EmoCard/index.tsx) [if showEmoCard]
+        │   │   ├─> PelvicTrainerStartSessionCard (src/app/PelvicHealth/PelvicTrainer/Components/PelvicTrainerStartSessionCard/index.tsx) [if showPelvic]
+        │   │   ├─> PelvicTrainerHomePageCard (src/app/PelvicHealth/PelvicTrainer/Components/PelvicTrainerHomePageCard/index.tsx) [if showPelvic]
+        │   │   └─> PlaylistWithVideoCallCard (src/containers/Playlist/components/PlaylistWithVideoCallCard.tsx)
+        │   │       ├─> VideoCallCard (src/modules/video-calls/components/VideoCallCard/index.tsx) [if !isGlobal]
+        │   │       └─> PlaylistWrapper (src/containers/Playlist/components/PlaylistWrapper.tsx)
+        │   │           ├─> EnsoCard (src/containers/Playlist/EnsoCard/index.tsx) [position based on showEnsoTop]
+        │   │           ├─> AcutePlaylistCard (src/modules/programs/acute/components/AcutePlaylistCard.tsx) [if isAcute]
+        │   │           ├─> HomePlaylistCard (src/modules/home/components/HomePlaylistCard/index.tsx) [if !isAcute]
+        │   │           │   ├─> Level1EtCard (src/containers/Playlist/components/Level1EtCard/index.tsx) [if showFtuCard]
+        │   │           │   └─> PlaylistCard (src/containers/Playlist/PlaylistCard.tsx) [if !showFtuCard]
+        │   │           │       ├─> DailyPlaylistComplete (src/modules/home/components/DailyPlaylistComplete/index.tsx) [if isComplete]
+        │   │           │       └─> DailyPlaylistIncomplete (src/modules/home/components/DailyPlaylistIncomplete/index.tsx) [if !isComplete]
+        │   │           ├─> ConfigurableLayout (src/modules/configurable-layout/components/ConfigurableLayout.tsx) [if isConfigurableHomeScreenOn]
+        │   │           └─> PostPlaylistModal (src/containers/Playlist/PostPlaylistModal/index.tsx) [if isComplete]
+        │   └─> ForYouSection (src/modules/home/components/ForYouSection/index.tsx)
+        │       ├─> ForYouHeader (src/modules/home/components/ForYouHeader/index.tsx)
+        │       ├─> FTUVideoCard (src/modules/home/components/FTUVideoCard/index.tsx) [if showFtuVideoCard]
+        │       ├─> EngagementIncentivesCard (src/modules/incentive/components/EngagementIncentivesCard/index.tsx)
+        │       ├─> BalanceAssessmentCard (src/modules/balanceAssessment/components/BalanceAssessmentCard.tsx)
+        │       ├─> ChallengeCardsWrapper (src/modules/challenge/challenge-cards/ChallengeCardsWrapper/index.tsx) [if !isGlobal && !isFtuAePlaylist]
+        │       ├─> ConsultationCTAWrapper (src/containers/Playlist/ConsultationCTAWrapper/index.tsx) [if showConsultationCard]
+        │       ├─> InAppMessagingCard (src/containers/Playlist/components/InAppMessagingCard/index.tsx) [if showIAMCard]
+        │       ├─> PelvicTrainerHomePageCard (src/app/PelvicHealth/PelvicTrainer/Components/PelvicTrainerHomePageCard/index.tsx) [if !isGlobal]
+        │       ├─> CvGuidancePostPlaylistCard (src/modules/cv/components/CvGuidancePostPlaylistCard/index.tsx) [if showCvGuidancePostPlaylistCard]
+        │       ├─> AeChronicFtuCards (src/containers/Playlist/components/AeChronicFtuCards/index.tsx) [if isFtuAePlaylist]
+        │       ├─> IncentivesV2EnsoCard (src/modules/incentive/components/EnsoCard/index.tsx) [if isIncentivesV2OrV3Enabled]
+        │       ├─> Level1Card (src/containers/Playlist/components/Level1Card/index.tsx) [if !isIncentivesV2OrV3Enabled]
+        │       ├─> FallPreventionSteadiCard (src/modules/fall-prevention/components/FallPreventionSteadiCard/index.tsx)
+        │       ├─> DttgTriviaGameCard (src/modules/dual-tasking/trivia-game-v2/components/DttgTriviaGameCard/index.tsx) [if !isGlobal]
+        │       ├─> PracticeLabHomeScreenIngressCards (src/modules/practice-lab/components/PracticeLabHomeScreenIngressCards/index.tsx) [if !isGlobal && !isFtuAePlaylist]
+        │       └─> ReferralComponent (src/containers/Playlist/ReferralComponent/index.tsx) [if showCTAs && !isGlobal]
+        └─> Error Screen (navigateToAppLoadingFailedScreens with PLAYLIST_TYPE_NOT_SUPPORTED) [if none of the above conditions match]`
   },
   {
     id: '5',

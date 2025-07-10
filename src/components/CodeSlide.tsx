@@ -19,7 +19,7 @@ export const CodeSlide: React.FC<CodeSlideProps> = ({ slide }) => {
           customStyle={{
             margin: 0,
             borderRadius: '0.5rem',
-            fontSize: '1.125rem',
+            fontSize: '0.5625em', /* 1.125rem relative to 2rem base = 0.5625em */
             lineHeight: '1.6',
             backgroundColor: 'var(--color-code-background)',
             border: '1px solid var(--color-border)',
