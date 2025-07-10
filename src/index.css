@@ -1,5 +1,17 @@
 :root {
-  /* Base color palette - Optimized for dark theme harmony */
+  /* Dark teal professional theme color palette */
+  --color-teal-darkest: #212c2c;   /* Near-black teal */
+  --color-teal-deep: #222d2d;      /* Deep gray-green */
+  --color-teal-dominant: #1a2323;  /* Very dark teal (dominant background) */
+  --color-teal-darker: #242f2f;    /* Another deep teal shade */
+  --color-teal-medium: #2e3838;    /* Slightly lighter dark teal */
+  --color-white-clean: #ffffff;    /* Pure white text */
+  --color-teal-accent: #4a9999;    /* Teal accent for highlights */
+  --color-teal-bright: #66b3b3;    /* Bright teal for emphasis */
+  --color-teal-soft: #80cccc;      /* Soft teal for secondary text */
+  --color-teal-pale: #b3e0e0;      /* Pale teal for muted text */
+
+  /* Legacy slate colors for compatibility */
   --color-slate-900: #0f172a;
   --color-slate-800: #1e293b;
   --color-slate-700: #334155;
@@ -11,47 +23,39 @@
   --color-slate-100: #f1f5f9;
   --color-slate-50: #f8fafc;
 
-  --color-blue-600: #2563eb;
-  --color-blue-500: #3b82f6;
-  --color-blue-400: #60a5fa;
-
-  --color-emerald-500: #10b981;
-  --color-emerald-400: #34d399;
-
-  /* Desaturated amber for better dark theme harmony */
-  --color-amber-500: #d97706;
-  --color-amber-400: #f59e0b;
-  --color-amber-300: #fbbf24;
-
-  /* Semantic colors - Following dark theme best practices */
-  --color-background: #121212;  /* Google Material recommended dark gray */
-  --color-surface: var(--color-slate-800);
-  --color-surface-elevated: var(--color-slate-700);
-  --color-surface-dark: var(--color-slate-900);
-  --color-code-background: #000000;  /* Pure black for code - power saving on OLED */
+  /* Semantic colors - Dark teal professional theme */
+  --color-background: #000000;  /* Always black background */
+  --color-surface: var(--color-teal-dominant);  /* Very dark teal surface */
+  --color-surface-elevated: var(--color-teal-medium);  /* Slightly lighter teal for elevated surfaces */
+  --color-surface-dark: var(--color-teal-darkest);
+  --color-code-background: var(--color-teal-darkest);  /* Near-black teal for code blocks */
   
-  /* Softer text colors for reduced eye strain */
-  --color-text-primary: #e2e8f0;  /* Slightly softer than pure white */
-  --color-text-secondary: var(--color-slate-300);
-  --color-text-muted: var(--color-slate-400);
+  /* Professional teal text colors */
+  --color-text-primary: var(--color-white-clean);  /* Pure white text */
+  --color-text-secondary: var(--color-teal-soft);  /* Soft teal for secondary text */
+  --color-text-muted: var(--color-teal-pale);  /* Pale teal for muted text */
   
-  /* Desaturated amber accent for better harmony */
-  --color-accent: var(--color-amber-500);  /* Now using the desaturated version */
-  --color-accent-hover: var(--color-amber-400);
-  --color-accent-warm: var(--color-amber-500);
+  /* Teal accent system */
+  --color-accent: var(--color-teal-accent);  /* Teal accent */
+  --color-accent-hover: var(--color-teal-bright);
   
-  /* Semantic UI colors - Using desaturated accent */
-  --color-slide-title: var(--color-accent-warm);
-  --color-bullet-point: var(--color-accent-warm);
-  --color-progress: var(--color-accent-warm);
+  /* Semantic UI colors - Teal theme accents */
+  --color-slide-title: var(--color-teal-bright);  /* Bright teal slide titles */
+  --color-bullet-point: var(--color-teal-bright);  /* Bright teal bullet points */
+  --color-progress: var(--color-teal-bright);  /* Bright teal progress bar */
   
-  --color-border: var(--color-slate-600);
-  --color-border-light: var(--color-slate-500);
+  --color-border: var(--color-teal-medium);  /* Medium teal borders */
+  --color-border-light: var(--color-teal-soft);  /* Soft teal for lighter borders */
 
-  /* Typography */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography - IBM Plex font family for tech aesthetic */
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   font-weight: 400;
+  
+  /* Font families for different content types */
+  --font-monospace: 'IBM Plex Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'IBM Plex Sans', sans-serif;
   
   /* Rendering optimizations */
   font-synthesis: none;
@@ -122,7 +126,7 @@ li {
 }
 
 code {
-  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-family: var(--font-monospace);
   font-size: 0.9em;
   background-color: var(--color-code-background);
   padding: 0.125rem 0.25rem;

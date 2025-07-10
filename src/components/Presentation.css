@@ -87,7 +87,8 @@
   color: var(--color-slide-title);
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.5em;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: var(--font-display);
 }
 
 .slide-bullets {
@@ -97,12 +98,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.25em;
+  gap: 1em;
   justify-content: center;
 }
 
 .slide-bullet {
-  font-size: 1.5em; /* 3rem relative to 2rem base = 1.5em */
+  font-size: 1.75em; /* 3.5rem relative to 2rem base = 1.75em */
   color: var(--color-text-primary);
   position: relative;
   padding-left: 0.7em;
@@ -124,15 +125,17 @@
 .slide-bullet .bullet-main {
   font-size: 1em; /* Same as parent bullet size */
   color: var(--color-text-primary);
-  font-weight: 400;
+  font-weight: 500;
+  font-family: var(--font-display);
   display: block;
   line-height: 1.5;
 }
 
 .slide-bullet .bullet-sub {
-  font-size: 0.75em; /* Smaller than main text */
+  font-size: 0.6em; /* Even smaller subtitle text */
   color: var(--color-text-muted);
   font-weight: 400;
+  font-family: var(--font-sans);
   display: block;
   line-height: 1.4;
 }
@@ -165,7 +168,8 @@
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.5em;
   flex-shrink: 0;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: var(--font-display);
 }
 
 .code-container {
