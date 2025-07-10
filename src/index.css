@@ -32,8 +32,14 @@
   --color-text-secondary: var(--color-slate-300);
   --color-text-muted: var(--color-slate-400);
   
-  --color-accent: var(--color-blue-500);
-  --color-accent-hover: var(--color-blue-400);
+  --color-accent: var(--color-amber-500);
+  --color-accent-hover: var(--color-amber-400);
+  --color-accent-warm: var(--color-amber-500);
+  
+  /* Semantic UI colors */
+  --color-slide-title: var(--color-accent-warm);
+  --color-bullet-point: var(--color-accent-warm);
+  --color-progress: var(--color-accent-warm);
   
   --color-border: var(--color-slate-600);
   --color-border-light: var(--color-slate-500);

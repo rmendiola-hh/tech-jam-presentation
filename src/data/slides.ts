@@ -256,11 +256,12 @@ export const createHomeLayout = (
     type: 'bullets',
     title: 'Storybook for Presentational Components',
     bullets: [
-      'Leverage React Native web capabilities for component development',
-      'No need for simulators - see work instantly on web',
-      'PMs and designers can review UI before nightly builds',
-      'Living documentation of available components',
-      'Automatic deployment via GitHub Actions'
+      'Leverage React Native web capabilities - Cross-platform component development',
+      'No need for simulators - See work instantly on web without installation overhead',
+      'PMs and designers can review UI before nightly builds - Faster feedback loop during development',
+      'Living documentation of available components - Non-technical team members can explore components',
+      'Automatic deployment via GitHub Actions - Safe Storybook builds without affecting Phoenix production',
+      'DEMO'
     ]
   },
   {
@@ -281,16 +282,20 @@ export const createHomeLayout = (
     title: 'Home Cards Package Exports',
     language: 'typescript',
     code: `// packages/home-cards/src/index.ts
+export { ActionButton } from "./components/ActionButton";
 export { EtSessionCard } from "./components/EtSessionCard";
-export type { EtSessionCardProps } from "./components/EtSessionCard";
-export { PlaylistErrorCard } from "./components/PlaylistErrorCard";
-export type { PlaylistErrorCardProps } from "./components/PlaylistErrorCard";
-export { WeeklyGoalCard } from "./components/WeeklyGoalCard";
-export type { WeeklyGoalCardProps } from "./components/WeeklyGoalCard";
-export { ProgressTracker } from "./components/ProgressTracker";
-export type { ProgressTrackerProps } from "./components/ProgressTracker";
+export { GoalProgressTrackerItem } from "./components/GoalProgressTrackerItem";
+export { GoalStreakCounter } from "./components/GoalStreakCounter";
 export { IncentivesCard } from "./components/IncentivesCard";
-export type { IncentivesCardProps } from "./components/IncentivesCard";
+export { MidTermActivityGoalCard } from "./components/MidTermActivityGoalCard";
+export { PlaylistErrorCard } from "./components/PlaylistErrorCard";
+export { ProgressCircle } from "./components/ProgressCircle";
+export { ProgressTracker } from "./components/ProgressTracker";
+export { ProgressTrackerCard } from "./components/ProgressTrackerCard";
+export { QuickStartMenu } from "./components/QuickStartMenu";
+export { SimpleProgressTrackerItem } from "./components/SimpleProgressTrackerItem";
+export { TodayCard } from "./components/TodayCard";
+export { WeeklyGoalCard } from "./components/WeeklyGoalCard";
 
 // This separation allows the Home Cards package to focus 
 // purely on presentation while Phoenix handles all the 
