@@ -15,6 +15,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .slides-track {
@@ -148,10 +149,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-radius: 0 0 0.75rem 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-surface-elevated);
+  border-radius: 0.5rem;
 }
 
 .footer-title {
@@ -280,7 +280,7 @@
     flex-direction: column;
     gap: 0.75rem;
     align-items: flex-start;
-    padding: 0.75rem 0;
+    padding: 0.5rem 1rem;
   }
   
   .footer-title {
