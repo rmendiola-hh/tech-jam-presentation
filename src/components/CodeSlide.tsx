@@ -21,6 +21,8 @@ export const CodeSlide: React.FC<CodeSlideProps> = ({ slide }) => {
             borderRadius: '0.5rem',
             fontSize: '1.125rem',
             lineHeight: '1.6',
+            backgroundColor: 'var(--color-slate-900)',
+            border: '1px solid var(--color-border)',
           }}
         >
           {slide.code}
