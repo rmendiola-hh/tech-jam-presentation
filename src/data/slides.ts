@@ -206,7 +206,7 @@ export const createHomeLayout = (
     slug: 'Playlist-EtSession',
     props: {
       title,
-      caption: '${duration} minutes · ${treatmentAreas.join(", ")}',
+      caption: '\${duration} minutes · \${treatmentAreas.join(", ")}',
       buttonLabel,
       imageSource: firstExercisePreview,
       onPress: handleDailyPlaylist,
