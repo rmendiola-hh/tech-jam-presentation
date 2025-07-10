@@ -6,7 +6,7 @@
   background-color: var(--color-background);
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   box-sizing: border-box;
 }
 
@@ -149,7 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem;
+  padding: 0.5rem 1rem;
   background-color: var(--color-surface-elevated);
   border-radius: 0.5rem;
 }
@@ -182,13 +182,13 @@
   background-color: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
-  padding: 0.5rem;
-  border-radius: 0.375rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 1rem;
-  width: 2.25rem;
-  height: 2.25rem;
+  font-size: 0.875rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,7 +228,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .presentation {
-    padding: 15px;
+    padding: 15px 15px 8px 15px;
   }
   
   .slide {
@@ -264,7 +264,7 @@
 
 @media (max-width: 480px) {
   .presentation {
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
   }
   
   .slide {
