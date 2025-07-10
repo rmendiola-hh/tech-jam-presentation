@@ -143,20 +143,28 @@
   border-radius: 0 !important;
 }
 
-/* Presentation Controls */
-.presentation-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+/* Footer */
+.presentation-footer {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background-color: var(--color-surface-elevated);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
-  backdrop-filter: blur(10px);
-  z-index: 10;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.footer-title {
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .slide-counter {
@@ -171,16 +179,16 @@
 }
 
 .control-button {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
   padding: 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 1rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,11 +198,13 @@
   background-color: var(--color-accent);
   border-color: var(--color-accent);
   color: white;
+  transform: translateY(-1px);
 }
 
 .control-button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* Fullscreen Styles */
@@ -243,9 +253,12 @@
     font-size: 1.25rem;
   }
   
-  .presentation-controls {
-    bottom: 15px;
-    right: 15px;
+  .footer-title {
+    font-size: 0.875rem;
+  }
+  
+  .footer-controls {
+    gap: 1rem;
   }
 }
 
@@ -263,8 +276,25 @@
     margin-right: 10px;
   }
   
-  .presentation-controls {
-    bottom: 10px;
-    right: 10px;
+  .presentation-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+  }
+  
+  .footer-title {
+    font-size: 0.8rem;
+  }
+  
+  .footer-controls {
+    align-self: flex-end;
+    gap: 0.75rem;
+  }
+  
+  .control-button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
   }
 }

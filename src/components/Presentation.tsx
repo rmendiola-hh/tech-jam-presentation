@@ -138,33 +138,38 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
         </div>
       </div>
       
-      <div className="presentation-controls">
-        <div className="slide-counter">
-          {currentSlideIndex + 1} / {slides.length}
+      <footer className="presentation-footer">
+        <div className="footer-title">
+          Simplified Home Tech Jam July 2025
         </div>
-        <div className="control-buttons">
-          <button 
-            onClick={goToPrevSlide} 
-            disabled={currentSlideIndex === 0}
-            className="control-button"
-          >
-            ←
-          </button>
-          <button 
-            onClick={goToNextSlide} 
-            disabled={currentSlideIndex === slides.length - 1}
-            className="control-button"
-          >
-            →
-          </button>
-          <button 
-            onClick={toggleFullscreen}
-            className="control-button"
-          >
-            {isFullscreen ? '⛶' : '⛶'}
-          </button>
+        <div className="footer-controls">
+          <div className="slide-counter">
+            {currentSlideIndex + 1} / {slides.length}
+          </div>
+          <div className="control-buttons">
+            <button 
+              onClick={goToPrevSlide} 
+              disabled={currentSlideIndex === 0}
+              className="control-button"
+            >
+              ←
+            </button>
+            <button 
+              onClick={goToNextSlide} 
+              disabled={currentSlideIndex === slides.length - 1}
+              className="control-button"
+            >
+              →
+            </button>
+            <button 
+              onClick={toggleFullscreen}
+              className="control-button"
+            >
+              {isFullscreen ? '⛶' : '⛶'}
+            </button>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };
