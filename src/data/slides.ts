@@ -1,12 +1,14 @@
 import type { Slide } from '../types/slides';
 import ThreeStageArchitectureDiagram from '../components/ThreeStageArchitectureDiagram';
+import DetailedArchitectureDiagram from '../components/DetailedArchitectureDiagram';
+import MonorepoPackageDiagram from '../components/MonorepoPackageDiagram';
 
 export const sampleSlides: Slide[] = [
   {
     id: '1',
     type: 'title',
     title: 'Simplified Home',
-    subtitle: 'Technical Walkthrough - Strategic Development Approach'
+    subtitle: 'Technical Walk Through - Home/Library Pod'
   },
   {
     id: '2',
@@ -108,85 +110,18 @@ export const sampleSlides: Slide[] = [
   },
   {
     id: '6',
-    type: 'code',
-    title: 'Three-Stage Architecture',
-    language: 'text',
-    code: `LEGACY HOME: One Complex Component
-┌─────────────────────────────────────┐
-│  🔀 Complex Component (does everything)  │
-│  ├─ Data loading with hooks            │
-│  ├─ Business logic buried in hooks     │
-│  ├─ Conditional rendering logic        │
-│  ├─ Side effects and state management  │
-│  └─ Presentation mixed with logic      │
-└─────────────────────────────────────┘
-
-           ↓ SIMPLIFIED HOME ↓
-
-STAGE 1: Pre-loading Data
-┌─────────────────────────────────────┐
-│  📥 Switchboard (getUnifiedUserInfo)    │
-│  └─ All data loaded upfront            │
-└─────────────────────────────────────┘
-                 │
-                 ▼
-STAGE 2: Creating Object Representation  
-┌─────────────────────────────────────┐
-│  🏗️  Pure JavaScript Functions         │
-│  └─ Business logic creates data model  │
-└─────────────────────────────────────┘
-                 │
-                 ▼
-STAGE 3: Rendering the Card
-┌─────────────────────────────────────┐
-│  🎨 Presentational Components          │
-│  └─ Simple rendering without logic     │
-└─────────────────────────────────────┘`
-  },
-  {
-    id: '7',
     type: 'custom',
     title: 'Three-Stage Architecture Overview',
     component: ThreeStageArchitectureDiagram
   },
   {
-    id: '8',
-    type: 'code',
-    title: 'Simplified Home Architecture',
-    language: 'text',
-    code: `[STAGE 1: PRELOADING - SWITCHBOARD]
-getUnifiedUserInfo → preloadHomeScreenData()
-├─ preloadUserFirstName()
-├─ loadEtSessionCardIndications()
-├─ preloadWeeklyGoalTooltipDismissed()
-├─ loadAchvAchievementsDataWithStreaks()
-├─ loadFirstWeekGoal()
-├─ loadWeeklyGoalData()
-├─ preloadCompletedEtSessionItems()
-├─ loadPlaylist(isFtu)
-├─ preloadPelvicTrainerSetupStatus()
-└─ preloadEnsoCardData()
-
-[STAGE 2: OBJECT REPRESENTATION]
-HomeScreenV2 → createHomeLayout(state, capabilities)
-├─ generateDailyPlaylistCardData() → CardProps
-├─ generateWeeklyGoalCard() → CardProps
-├─ generateVideoCallCard() → CardProps
-├─ generateEnsoCard() → CardProps
-├─ generateProgressTrackerCardData() → CardProps
-├─ generateIncentivesCard() → CardProps
-└─ generateConfigurableLayout() → CardProps
-
-[STAGE 3: RENDERING]
-HomeScreenV2 → <HomeLayout items={items} />
-└─ Home Cards Package Components
-   ├─ <EtSessionCard {...props} />
-   ├─ <WeeklyGoalCard {...props} />
-   ├─ <ProgressTracker {...props} />
-   └─ <IncentivesCard {...props} />`
+    id: '7',
+    type: 'custom',
+    title: 'Detailed Architecture Flow',
+    component: DetailedArchitectureDiagram
   },
   {
-    id: '9',
+    id: '8',
     type: 'code',
     title: 'createHomeLayout Function',
     language: 'typescript',
@@ -219,7 +154,7 @@ export const createHomeLayout = (
 };`
   },
   {
-    id: '10',
+    id: '9',
     type: 'code',
     title: 'Card Generator Example',
     language: 'typescript',
@@ -259,12 +194,23 @@ export const createHomeLayout = (
 };`
   },
   {
+    id: '10',
+    type: 'bullets',
+    title: 'Benefits of This Architecture',
+    bullets: [
+      'Easier for developers to comprehend',
+      'Nice separation of concerns',
+      'Different developers can work on different stages simultaneously',
+      'Business logic is unit testable',
+      'Parallelizable work across the team'
+    ]
+  },
+  {
     id: '11',
     type: 'bullets',
     title: 'Storybook for Presentational Components',
     bullets: [
       'Leverage React Native web capabilities - Cross-platform component development',
-      'No need for simulators - See work instantly on web without installation overhead',
       'PMs and designers can review UI before nightly builds - Faster feedback loop during development',
       'Living documentation of available components - Non-technical team members can explore components',
       'Automatic deployment via GitHub Actions - Safe Storybook builds without affecting Phoenix production',
@@ -276,11 +222,11 @@ export const createHomeLayout = (
     type: 'bullets',
     title: 'The Home Cards Monorepo Package',
     bullets: [
-      'Strategic technical solution - first monorepo package in Phoenix',
-      'Storybook sandbox that does not affect Phoenix build',
-      'Exports clean, presentational components as NPM package',
-      'Protection against business logic in presentation components',
-      'Operational benefits for the whole team'
+      'Strategic technical solution - first monorepo package in Phoenix - Sets precedent for future modular architecture',
+      'Storybook sandbox that does not affect Phoenix build - Safe development environment without breaking main app',
+      'Exports clean, presentational components as NPM package - Reusable components across different projects',
+      'Protection against business logic in presentation components - Enforces separation of concerns at package level',
+      'Operational benefits for the whole team - Designers and PMs can interact with components directly'
     ]
   },
   {
@@ -310,18 +256,24 @@ export { WeeklyGoalCard } from "./components/WeeklyGoalCard";
   },
   {
     id: '14',
-    type: 'bullets',
-    title: 'Time to Interactive (TTI) Measurement',
-    bullets: [
-      'Measures complete user experience from switchboard to interactive home',
-      'Legacy home: switchboard → when you can press playlist card',
-      'Simplified home: switchboard → all data loaded and screen ready',
-      'Not comparing apples to apples - Simplified has more accurate measurement',
-      'Visibility into cross-team wins (Cloudflare performance improvements)'
-    ]
+    type: 'custom',
+    title: 'Monorepo Package Architecture',
+    component: MonorepoPackageDiagram
   },
   {
     id: '15',
+    type: 'bullets',
+    title: 'Time to Interactive (TTI) Measurement',
+    bullets: [
+      'Measures complete user experience from switchboard to interactive home - End-to-end performance tracking across the entire app flow',
+      'Legacy home: switchboard → when you can press playlist card - Partial measurement that misses loading states',
+      'Simplified home: switchboard → all data loaded and screen ready - Complete measurement including all preloading',
+      'Not comparing apples to apples - Simplified has more accurate measurement - Better visibility into actual user experience',
+      'Visibility into cross-team wins (Cloudflare performance improvements) - Infrastructure improvements become measurable'
+    ]
+  },
+  {
+    id: '16',
     type: 'code',
     title: 'TTI Implementation',
     language: 'typescript',
@@ -356,55 +308,18 @@ export default function HomeScreenV2() {
 }`
   },
   {
-    id: '16',
+    id: '17',
     type: 'bullets',
     title: 'Key Principles for Other Teams',
     bullets: [
-      'Extract Business Logic from React Components',
-      'Prioritize UI Agility - never impossible to tweak look and feel',
-      'Leverage Storybook for Designer Collaboration',
-      'Maximize BFF Usage - avoid waiting for app releases',
-      'Consolidate Network Requests for better performance'
-    ]
-  },
-  {
-    id: '17',
-    type: 'bullets',
-    title: 'More Principles for Other Teams',
-    bullets: [
-      'Use Feature Flags for Safe Rollouts',
-      'Measure Performance Impact with clear metrics',
-      'Clean Up Technical Debt Proactively',
-      'Maintain Architectural Consistency across features',
-      'Document technical debt as it is created'
+      'Extract Business Logic from React Components and Prioritize UI Agility - Pure functions make logic testable, components become purely presentational and easy to modify',
+      'Leverage Storybook for Designer Collaboration - Real components in isolated environment enable faster design iteration',
+      'Maximize BFF Usage - avoid waiting for app releases - Backend-driven configuration reduces deployment dependencies',
+      'Consolidate Network Requests for better performance - Preloading eliminates loading states and improves user experience'
     ]
   },
   {
     id: '18',
-    type: 'bullets',
-    title: 'Project Accomplishments',
-    bullets: [
-      '3 clear stages vs 7+ nested conditional layers',
-      'Pure functions for business logic vs hooks scattered everywhere',
-      'Presentational components from monorepo vs complex stateful components',
-      'Single source of truth vs distributed state management',
-      'Better developer experience and easier testing'
-    ]
-  },
-  {
-    id: '19',
-    type: 'bullets',
-    title: 'Benefits of This Architecture',
-    bullets: [
-      'Easier for developers to comprehend',
-      'Nice separation of concerns',
-      'Different developers can work on different stages simultaneously',
-      'Business logic is unit testable',
-      'Parallelizable work across the team'
-    ]
-  },
-  {
-    id: '20',
     type: 'bullets',
     title: 'Questions & Follow-Up',
     bullets: [

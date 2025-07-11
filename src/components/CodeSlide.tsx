@@ -25,6 +25,9 @@ export const CodeSlide: React.FC<CodeSlideProps> = ({ slide }) => {
             border: '1px solid var(--color-border)',
             flex: 1,
             height: '100%',
+            minWidth: 0,
+            overflowX: 'auto',
+            whiteSpace: 'pre',
           }}
           codeTagProps={{
             style: {

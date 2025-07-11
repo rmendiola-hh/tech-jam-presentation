@@ -13,6 +13,25 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const firstSlideRef = useRef<HTMLDivElement | null>(null);
 
+  // Get slide index from URL hash
+  const getSlideIndexFromHash = useCallback(() => {
+    const hash = window.location.hash.slice(1); // Remove # prefix
+    const slideNumber = parseInt(hash, 10);
+    if (!isNaN(slideNumber) && slideNumber >= 1 && slideNumber <= slides.length) {
+      return slideNumber - 1; // Convert to 0-based index
+    }
+    return 0;
+  }, [slides.length]);
+
+  // Update URL hash when slide changes
+  const updateUrlHash = useCallback((slideIndex: number) => {
+    const slideNumber = slideIndex + 1; // Convert to 1-based
+    const newHash = `#${slideNumber}`;
+    if (window.location.hash !== newHash) {
+      window.history.replaceState(null, '', newHash);
+    }
+  }, []);
+
   // Measure single slide width (all slides are same width)
   const measureSlideWidth = useCallback(() => {
     if (firstSlideRef.current) {
@@ -22,6 +41,17 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
       setSlideWidth(width);
     }
   }, []);
+
+  // Initialize slide index from URL hash on mount
+  useEffect(() => {
+    const initialSlideIndex = getSlideIndexFromHash();
+    setCurrentSlideIndex(initialSlideIndex);
+  }, [getSlideIndexFromHash]);
+
+  // Update URL hash when slide changes
+  useEffect(() => {
+    updateUrlHash(currentSlideIndex);
+  }, [currentSlideIndex, updateUrlHash]);
 
   // Measure on mount, resize, and fullscreen changes
   useEffect(() => {
@@ -103,13 +133,20 @@ export const Presentation: React.FC<PresentationProps> = ({ slides }) => {
       setIsFullscreen(!!document.fullscreenElement);
     };
     
+    const handleHashChange = () => {
+      const newSlideIndex = getSlideIndexFromHash();
+      setCurrentSlideIndex(newSlideIndex);
+    };
+    
     document.addEventListener('fullscreenchange', handleFullscreenChange);
+    window.addEventListener('hashchange', handleHashChange);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [handleKeyDown]);
+  }, [handleKeyDown, getSlideIndexFromHash]);
 
   if (slides.length === 0) {
     return <div className="no-slides">No slides available</div>;

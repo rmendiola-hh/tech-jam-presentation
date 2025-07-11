@@ -30,6 +30,7 @@
   height: 100%;
   position: relative;
   margin-right: 20px;
+  min-width: 0;
 }
 
 .slide-wrapper:last-child {
@@ -51,6 +52,7 @@
   box-sizing: border-box;
   overflow: hidden;
   font-size: 2rem; /* Base font size - all other sizes will be relative to this */
+  min-width: 0;
 }
 
 .slide-content {
@@ -59,6 +61,7 @@
   flex-direction: column;
   gap: 2rem;
   min-height: 0;
+  min-width: 0;
 }
 
 /* Title Slide Styles */
@@ -162,12 +165,17 @@
 }
 
 /* Custom Slide Styles */
+.custom-slide {
+  gap: 0;
+}
+
 .custom-slide .slide-title {
   font-size: 1.5em; /* 3rem relative to 2rem base = 1.5em */
-  margin-bottom: 1em;
+  margin-bottom: 0;
+  margin-top: 0;
   color: var(--color-slide-title);
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0.5em;
+  padding-bottom: 0.25em;
   flex-shrink: 0;
   font-weight: 600;
   font-family: var(--font-display);
@@ -179,7 +187,6 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 0.75rem;
   padding: 1rem;
@@ -198,9 +205,11 @@
 
 .code-container {
   flex: 1;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   border-radius: 0.5rem;
   min-height: 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
 }
@@ -222,7 +231,10 @@
   padding: 0.75em !important;
   border-radius: 0 !important;
   flex: 1 !important;
-  overflow: auto !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
 }
 
 /* Footer */

@@ -47,6 +47,26 @@
   --color-border: var(--color-teal-medium);  /* Medium teal borders */
   --color-border-light: var(--color-teal-soft);  /* Soft teal for lighter borders */
 
+  /* Highlight colors for icons and special elements */
+  --color-highlight-orange: #ff7043;    /* Warm orange for packages/components */
+  --color-highlight-blue: #42a5f5;     /* Cool blue for apps/main features */
+  --color-highlight-green: #66bb6a;    /* Green for success/exports */
+  --color-highlight-purple: #ab47bc;   /* Purple for tools/storybook */
+  --color-highlight-amber: #ffca28;    /* Amber for documentation/features */
+  --color-highlight-pink: #ec407a;     /* Pink for navigation/routing */
+  --color-highlight-cyan: #26c6da;     /* Cyan for API/integration */
+  --color-highlight-lime: #9ccc65;     /* Lime for testing/interactive */
+
+  /* Semantic highlight colors */
+  --color-icon-package: var(--color-highlight-orange);
+  --color-icon-app: var(--color-highlight-blue);
+  --color-icon-export: var(--color-highlight-green);
+  --color-icon-storybook: var(--color-highlight-purple);
+  --color-icon-documentation: var(--color-highlight-amber);
+  --color-icon-navigation: var(--color-highlight-pink);
+  --color-icon-api: var(--color-highlight-cyan);
+  --color-icon-testing: var(--color-highlight-lime);
+
   /* Typography - IBM Plex font family for tech aesthetic */
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
