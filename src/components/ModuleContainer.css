@@ -1,10 +1,6 @@
 .module-container {
-  background-color: var(--color-surface-elevated);
-  border-radius: 1rem;
-  padding: 1.5rem;
   width: 100%;
   min-width: 300px;
-  min-height: 400px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -12,13 +8,7 @@
 }
 
 /* Variants for different modules */
-.module-container.home-cards {
-  border: 2px solid var(--color-teal-bright);
-}
-
 .module-container.phoenix-app {
-  border: 2px solid var(--color-teal-accent);
-  padding: 2rem;
   gap: 2rem;
 }
 
@@ -26,6 +16,5 @@
 @media (max-width: 768px) {
   .module-container {
     height: auto;
-    min-height: 350px;
   }
 }

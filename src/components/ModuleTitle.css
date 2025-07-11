@@ -1,9 +1,15 @@
 .module-title {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0;
   margin-bottom: 1rem;
   background-color: transparent;
+}
+
+.module-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .module-icon {
@@ -45,13 +51,35 @@
 }
 
 .module-description {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   text-align: left;
   line-height: 1.4;
   margin: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.module-bullet-points {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.module-bullet-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.bullet-text {
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  flex: 1;
 }
 
 /* Responsive adjustments */

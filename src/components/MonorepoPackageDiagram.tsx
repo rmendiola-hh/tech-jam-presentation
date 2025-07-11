@@ -1,4 +1,6 @@
 import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Module from './Module';
 import MaterialIcon from './MaterialIcon';
 import StorybookIcon from './StorybookIcon';
@@ -9,7 +11,10 @@ const MonorepoPackageDiagram: React.FC = () => {
     <div className="monorepo-package-diagram">
       <div className="monorepo-container">
         <div className="repository-container">
-          <div className="repository-label">Phoenix Repository</div>
+          <div className="repository-label">
+            <MaterialIcon name="code" color="var(--color-highlight-green)" size="small" />
+            Phoenix Repository
+          </div>
           
           {/* Home Cards Package - Left Side */}
           <div className="package-section">
@@ -17,8 +22,21 @@ const MonorepoPackageDiagram: React.FC = () => {
               icon="inventory_2"
               iconColor="var(--color-icon-package)"
               title="Home Cards Package"
-              subtitle="packages/home-cards"
-              description="An encapsulation that keeps pure presentational components away from Phoenix business logic. Provides a sandbox to use Storybook to create and document new components without necessarily including them in Phoenix."
+              subtitle="A clearly encapsulated sandbox for pure presentational components"
+              description="This monorepo package allows us to provide a clean encapsulation for pure presentational components, away from the complex business logic of Phoenix. Provides a sandbox to use Storybook to create and document new components without necessarily including them in Phoenix."
+              bulletPoints={[
+                {
+                  text: "Pull Requests automatically deploy a Storybook url for non-developers to review",
+                  icon: "rocket_launch",
+                  iconColor: "var(--color-highlight-blue)"
+                },
+                {
+                  text: "ESLint rules prevent this package from importing files from Phoenix, enforcing encapsulation",
+                  icon: "security",
+                  iconColor: "var(--color-highlight-red)"
+                }
+              ]}
+              path="src/packages/home-cards"
               className="home-cards"
             >
               <div className="package-content">
@@ -102,24 +120,8 @@ const MonorepoPackageDiagram: React.FC = () => {
                       <span className="export-name">ProgressTracker</span>
                     </div>
                     <div className="export-item">
-                      <MaterialIcon name="output" color="var(--color-icon-export)" size="small" />
-                      <span className="export-name">ProgressTrackerCard</span>
-                    </div>
-                    <div className="export-item">
-                      <MaterialIcon name="output" color="var(--color-icon-export)" size="small" />
-                      <span className="export-name">QuickStartMenu</span>
-                    </div>
-                    <div className="export-item">
-                      <MaterialIcon name="output" color="var(--color-icon-export)" size="small" />
-                      <span className="export-name">SimpleProgressTrackerItem</span>
-                    </div>
-                    <div className="export-item">
-                      <MaterialIcon name="output" color="var(--color-icon-export)" size="small" />
-                      <span className="export-name">TodayCard</span>
-                    </div>
-                    <div className="export-item">
-                      <MaterialIcon name="output" color="var(--color-icon-export)" size="small" />
-                      <span className="export-name">WeeklyGoalCard</span>
+                      <MaterialIcon name="more_horiz" color="var(--color-text-secondary)" size="small" />
+                      <span className="export-name">...more components</span>
                     </div>
                   </div>
                 </div>
@@ -129,9 +131,27 @@ const MonorepoPackageDiagram: React.FC = () => {
 
           {/* Import Arrow */}
           <div className="import-arrow">
-            <div className="arrow-line-horizontal"></div>
-            <div className="arrow-head-right">→</div>
-            <div className="arrow-label">imports</div>
+            <svg 
+              width="50" 
+              height="24" 
+              viewBox="0 0 50 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M2 12L48 12" 
+                stroke="var(--color-teal-bright)" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+              <path 
+                d="M40 6L48 12L40 18" 
+                stroke="var(--color-teal-bright)" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
 
           {/* Phoenix App - Right Side */}
@@ -140,8 +160,16 @@ const MonorepoPackageDiagram: React.FC = () => {
               icon="phone_android"
               iconColor="var(--color-icon-app)"
               title="Phoenix App"
-              subtitle="the main react native application"
-              description="This is the main application which handles business logic, state management, navigation & routing, and API integration."
+              subtitle="The main react native application"
+              description="This is the main application which handles business logic, state management, navigation & routing, and API integration. The new simplified home screen imports its presentational components from the home-cards package."
+              bulletPoints={[
+                {
+                  text: "ESLint rules prevent Phoenix from importing non-public home-cards internals, preventing abstraction violations",
+                  icon: "security",
+                  iconColor: "var(--color-highlight-red)"
+                }
+              ]}
+              path="src/index.ts"
               className="phoenix-app"
             >
               <div className="component-section">
@@ -152,60 +180,40 @@ const MonorepoPackageDiagram: React.FC = () => {
                   <div className="component-title">HomeScreenV2</div>
                 </div>
                 
-                <div className="code-block">
-                  <div className="code-line">
-                    <span className="code-keyword">import</span> {"{"}
-                  </div>
-                  <div className="code-line indent">
-                    <span className="code-import">EtSessionCard</span>,
-                  </div>
-                  <div className="code-line indent">
-                    <span className="code-import">WeeklyGoalCard</span>,
-                  </div>
-                  <div className="code-line indent">
-                    <span className="code-import">IncentivesCard</span>
-                  </div>
-                  <div className="code-line">
-                    {"}"} <span className="code-keyword">from</span> <span className="code-string">"home-cards"</span>;
-                  </div>
-                  <div className="code-line">
-                    &nbsp;
-                  </div>
-                  <div className="code-line">
-                    <span className="code-keyword">const</span> <span className="code-function">renderCard</span> = (item) => {"{"}
-                  </div>
-                  <div className="code-line indent">
-                    <span className="code-keyword">switch</span> (item.cardName) {"{"}
-                  </div>
-                  <div className="code-line indent indent">
-                    <span className="code-keyword">case</span> <span className="code-string">"EtSession"</span>:
-                  </div>
-                  <div className="code-line indent indent indent">
-                    <span className="code-keyword">return</span> <span className="code-tag">&lt;EtSessionCard</span> <span className="code-prop">{"...props"}</span> <span className="code-tag">/&gt;</span>;
-                  </div>
-                  <div className="code-line indent indent">
-                    <span className="code-keyword">case</span> <span className="code-string">"WeeklyGoal"</span>:
-                  </div>
-                  <div className="code-line indent indent indent">
-                    <span className="code-keyword">return</span> <span className="code-tag">&lt;WeeklyGoalCard</span> <span className="code-prop">{"...props"}</span> <span className="code-tag">/&gt;</span>;
-                  </div>
-                  <div className="code-line indent indent">
-                    <span className="code-keyword">case</span> <span className="code-string">"Incentives"</span>:
-                  </div>
-                  <div className="code-line indent indent indent">
-                    <span className="code-keyword">return</span> <span className="code-tag">&lt;IncentivesCard</span> <span className="code-prop">{"...props"}</span> <span className="code-tag">/&gt;</span>;
-                  </div>
-                  <div className="code-line indent">
-                    {"}"}
-                  </div>
-                  <div className="code-line">
-                    {"}"};
-                  </div>
-                </div>
+                <SyntaxHighlighter
+                  language="typescript"
+                  style={vscDarkPlus}
+                  customStyle={{
+                    margin: 0,
+                    borderRadius: '0.5rem',
+                    fontSize: '0.75rem',
+                    lineHeight: '1.4'
+                  }}
+                >
+                  {`import {
+  EtSessionCard,
+  WeeklyGoalCard,
+  IncentivesCard
+} from "home-cards";
+
+const renderCard = (item) => {
+  switch (item.cardName) {
+    case "EtSession":
+      return <EtSessionCard {...props} />;
+    case "WeeklyGoal":
+      return <WeeklyGoalCard {...props} />;
+    case "Incentives":
+      return <IncentivesCard {...props} />;
+  }
+};`}
+                </SyntaxHighlighter>
               </div>
             </Module>
           </div>
         </div>
+      </div>
+      <div className="diagram-caption">
+        Monorepo packages and ESLint rules provide a great mechanism for enforcing modularity of the codebase, making it easier to maintain clear boundaries and prevent architectural drift. Home/Library pod built a mechanism for making packages deployable, so any team could now create their own sandbox in the Phoenix repo that creates web artifacts without negatively impacting Phoenix
       </div>
     </div>
   );
